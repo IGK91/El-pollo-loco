@@ -7,12 +7,12 @@ class DrawableObject {
     imageCache = {};
     currentImage = 0;
 
-    loadImage(path) {
+    setImage(path) {
         this.img = new Image();
         this.img.src = path;
     }
 
-    loadImages(paths) {
+    preloadImages(paths) {
         paths.forEach((path) => {
             let image = new Image();
             image.src = path;

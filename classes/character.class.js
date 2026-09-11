@@ -5,6 +5,7 @@ class Character extends MovableObject {
     y = 160;
     groundY = 160;
     speed = 8;
+    world;
 
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -42,10 +43,10 @@ class Character extends MovableObject {
 
     constructor() {
         super();
-        this.loadImages(this.IMAGES_IDLE);
-        this.loadImages(this.IMAGES_WALKING);
-        this.loadImages(this.IMAGES_JUMPING);
-        this.loadImage(this.IMAGES_IDLE[0]);
+        this.preloadImages(this.IMAGES_IDLE);
+        this.preloadImages(this.IMAGES_WALKING);
+        this.preloadImages(this.IMAGES_JUMPING);
+        this.setImage(this.IMAGES_IDLE[0]);
     }
 
     animate() {
@@ -55,21 +56,32 @@ class Character extends MovableObject {
     }
 
     handleInput() {
-        if (keyboard.RIGHT) {
-            this.moveRight();
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.endX) {
+            this.walkRight();
         }
-        if (keyboard.LEFT) {
-            this.moveLeft();
+        if (this.world.keyboard.LEFT && this.x > -80) {
+            this.walkLeft();
         }
-        if (keyboard.SPACE && !this.isAboveGround()) {
+        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
             this.jump();
         }
+        this.world.cameraX = -this.x + 80;
+    }
+
+    walkRight() {
+        this.moveRight();
+        this.otherDirection = false;
+    }
+
+    walkLeft() {
+        this.moveLeft();
+        this.otherDirection = true;
     }
 
     playCurrentAnimation() {
         if (this.isAboveGround()) {
             this.playAnimation(this.IMAGES_JUMPING);
-        } else if (keyboard.LEFT || keyboard.RIGHT) {
+        } else if (this.world.keyboard.LEFT || this.world.keyboard.RIGHT) {
             this.playAnimation(this.IMAGES_WALKING);
         } else {
             this.playAnimation(this.IMAGES_IDLE);
