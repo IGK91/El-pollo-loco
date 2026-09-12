@@ -1,8 +1,22 @@
 let level1;
 
 function createLevel1() {
-    level1 = new Level(createClouds(), createBackground());
+    level1 = new Level(createEnemies(), createClouds(), createBackground());
     return level1;
+}
+
+function createEnemies() {
+    return [
+        new Chicken(520),
+        new Chicken(880),
+        new Chicken(1350),
+        new Chicken(1900),
+        new SmallChicken(700),
+        new SmallChicken(1150),
+        new SmallChicken(1700),
+        new SmallChicken(2150),
+        new Endboss(2750)
+    ];
 }
 
 function createClouds() {

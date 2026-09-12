@@ -9,6 +9,9 @@ window.addEventListener('keydown', (event) => {
         keyboard.SPACE = true;
         event.preventDefault();
     }
+    if (event.code === 'KeyH') {
+        showHitboxes = !showHitboxes;
+    }
 });
 
 window.addEventListener('keyup', (event) => {

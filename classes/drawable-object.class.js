@@ -26,4 +26,9 @@ class DrawableObject {
         }
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
+    drawFrame(ctx) {
+        ctx.strokeStyle = '#3aa3ff';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(this.x, this.y, this.width, this.height);
+    }
 }
