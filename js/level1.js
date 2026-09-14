@@ -1,7 +1,7 @@
 let level1;
 
 function createLevel1() {
-    level1 = new Level(createEnemies(), createClouds(), createBackground());
+    level1 = new Level(createEnemies(), createClouds(), createBackground(), createCoins(), createBottles());
     return level1;
 }
 
@@ -46,5 +46,34 @@ function createBackgroundSegment(index) {
         new BackgroundObject('img/5_background/layers/3_third_layer/' + variant + '.png', x),
         new BackgroundObject('img/5_background/layers/2_second_layer/' + variant + '.png', x),
         new BackgroundObject('img/5_background/layers/1_first_layer/' + variant + '.png', x)
+    ];
+}
+
+function createCoins() {
+    return [
+        new Coin(560, 240),
+        new Coin(645, 195),
+        new Coin(730, 165),
+        new Coin(815, 195),
+        new Coin(900, 240),
+        new Coin(1300, 205),
+        new Coin(1385, 165),
+        new Coin(1470, 205),
+        new Coin(1950, 185),
+        new Coin(2120, 235)
+    ];
+}
+
+function createBottles() {
+    return [
+        new Bottle(380, 0),
+        new Bottle(760, 1),
+        new Bottle(1050, 0),
+        new Bottle(1240, 1),
+        new Bottle(1520, 0),
+        new Bottle(1820, 1),
+        new Bottle(2050, 0),
+        new Bottle(2280, 1),
+        new Bottle(2420, 0)
     ];
 }

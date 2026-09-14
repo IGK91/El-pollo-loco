@@ -6,6 +6,8 @@ class Character extends MovableObject {
     groundY = 160;
     speed = 8;
     world;
+    coins = 0;
+    bottles = 0;
     offset = { top: 115, right: 18, bottom: 5, left: 18 };
 
     IMAGES_IDLE = [
